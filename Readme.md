@@ -5,7 +5,7 @@ Este projeto é referente a um teste empresarial.
 <h3>Dependencias para executar os arquivos ".py".</h3>
 
 <b>1</b> - Ter o python instalado <br>
-<b>2</b>  - instalar boto3: "pip install boto3"
+<b>2</b>  - instalar boto3: "pip install boto3"<br>
 <b>3</b>  - instalar awscli: http://docs.aws.amazon.com/pt_br/cli/latest/userguide/installing.html
 
 <h3>Rodar os arquivos na seguinte ordem:</h3>
