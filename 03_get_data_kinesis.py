@@ -14,8 +14,8 @@ my_shard_id = 'shardId-000000000000'
 
 shard_iterator = kinesis_client.get_shard_iterator(StreamName=my_stream_name,
                                                    ShardId=my_shard_id,
-                                                   ShardIteratorType='AT_TIMESTAMP',
-                                                   Timestamp=datetime(2015, 1, 1)
+                                                   ShardIteratorType='TRIM_HORIZON'
+                                                   #Timestamp=datetime(2015, 1, 1)
                                                    )
 
 my_shard_iterator = shard_iterator['ShardIterator']
@@ -38,5 +38,3 @@ while 'NextShardIterator' in record_response:
         c.execute('INSERT INTO analysis_email VALUES (?,?,?)', (data['event_id'], data['event_type'], data['datetime']))
         # Commit do insert
         conn.commit()
-    # wait for 2 seconds
-    time.sleep(2)

@@ -16,7 +16,7 @@ except Exception as e:
 
 #Coletando informações da base de origem Mysql
 cursor = db.cursor()
-cursor.execute('''select id as id_sale, o.order_id, p.category, p.sub_category, p.brand, cast(oi.selling_price as CHAR) as selling_price, o.order_date
+cursor.execute('''select id as id_sale, o.order_id, p.category, p.sub_category, p.brand, cast(oi.selling_price as CHAR) as selling_price, o.order_date, o.status
                     from orderitem oi
                     inner join products p on p.product_id = oi.product_id
                     inner join orders o on o.order_id = oi.order_id'''
@@ -32,7 +32,7 @@ c = conn.cursor()
 #Abrindo a transação
 c.execute('begin')
 #Inserindo dados necessarios para alinse, retirado da base de origem Mysql
-c.executemany('INSERT INTO analysis_request VALUES (?,?,?,?,?,?,?)', result)
+c.executemany('INSERT INTO analysis_request VALUES (?,?,?,?,?,?,?,?)', result)
 #Commit do insert
 c.execute('commit')
 

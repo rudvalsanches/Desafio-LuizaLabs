@@ -8,21 +8,23 @@ cursor = conn.cursor()
 
 # criando as tabelas
 cursor.execute("""
-CREATE TABLE analysis_request (
+CREATE TABLE IF NOT EXISTS analysis_request (
         sale_id INTEGER NOT NULL PRIMARY KEY,
         order_id TEXT NOT NULL,
         category TEXT NOT NULL,
         sub_category TEXT NOT NULL,
         brand TEXT NOT NULL,
-        selling_price DECIMAL(10.5) NOT NULL,
-        order_date DATETIME NOT NULL
+        selling_price INTEGER NOT NULL,
+        order_date DATETIME NOT NULL,
+        status text
 );
 """)
 
 cursor.execute("""
-CREATE TABLE analysis_email (
+CREATE TABLE IF NOT EXISTS analysis_email (
         event_id TEXT NOT NULL PRIMARY KEY,
-        event_type TEXT NOT NULL
+        event_type TEXT NOT NULL,
+        datetime time
 );
 """)
 
