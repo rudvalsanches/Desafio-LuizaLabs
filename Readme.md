@@ -2,11 +2,9 @@
 
 Este projeto é referente a um teste empresarial.
 
-
 <h3>Dependencias para executar os arquivos ".py".</h3>
 
 <b>1</b> - Ter o python instalado <br>
-
 <b>2</b>  - instalar boto3: "pip install boto3"
 
 <h3>Rodar os arquivos na seguinte ordem:</h3>
