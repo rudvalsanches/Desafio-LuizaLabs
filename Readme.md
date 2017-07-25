@@ -2,7 +2,7 @@
 
 Este projeto é referente a um teste empresarial.
 
-<h3>Dependencias para executar os arquivos ".py".</h3>
+<h3>Dependências para executar os arquivos ".py".</h3>
 
 <b>01</b> - Ter o python instalado no computador <br>
 <b>02</b> - Instalar o Client Mysql: "pip3 install pymysql"<br>
