@@ -1,12 +1,10 @@
+#coding: utf-8
+import os, sys
 import boto3
-import json
 from datetime import datetime
 import time
 import json
-import ast
-import pandas as pd
-from pandas.io.json import json_normalize
-from json import dumps
+import sqlite3
 
 my_stream_name = 'big-data-analytics-desafio'
 
@@ -27,6 +25,18 @@ record_response = kinesis_client.get_records(ShardIterator=my_shard_iterator)
 while 'NextShardIterator' in record_response:
     record_response = kinesis_client.get_records(ShardIterator=record_response['NextShardIterator'])
 
-    print (record_response)
-    # wait for 5 seconds
+    # Connectando no banco de dados local
+    conn = sqlite3.connect('desafio-luizalabs.db')
+
+    # definindo um cursor
+    c = conn.cursor()
+
+    for o in record_response["Records"]:
+        data = json.loads(o["Data"])
+
+        # Inserindo dados necessarios para alinse, retirado da base de origem Kinesis
+        c.execute('INSERT INTO analysis_email VALUES (?,?,?)', (data['event_id'], data['event_type'], data['datetime']))
+        # Commit do insert
+        conn.commit()
+    # wait for 2 seconds
     time.sleep(2)
