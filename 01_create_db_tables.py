@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS analysis_request (
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS analysis_email (
-        event_id TEXT NOT NULL PRIMARY KEY,
+        event_id TEXT NOT NULL,
         event_type TEXT NOT NULL,
         datetime time
 );
